@@ -2,17 +2,17 @@
 <html>
   <head>
     <meta charset="UTF-8">
-	
+
 	<link rel="stylesheet" type="text/css" href="layout.css">
 	<link rel="stylesheet" type="text/css" href="./jquery-ui.min.css">
-	
+
 	<!--<script src="./jquery.js"></script>-->
 	<script type="text/javascript" src="./jquery.min.js"></script>
 	<script type="text/javascript" src="./jquery-ui.min.js"></script>
-	
+
     <title>BREATHING_RESISTANCE_ANALYSIS</title>
   </head>
-  
+
   <body>
   <div id='header' style='display: none;'>
 	<table id='gearData'>
@@ -60,19 +60,18 @@
 	var form = require('./form.js');
 	var {dialog} = require('electron').remote;
 	var buttonsManager = require('./ButtonsHandler.js');
-	
-	var shell = require("shelljs");
+
 	var exec = require('child_process').exec;
 
-	
-	
+
+
 	var contentDisplayObjects = new Array($('#header'), $('#footer'));
-	
+
 	dialog.showOpenDialog({properties: ['openFile', 'singleSelection']}, function(file) {
 		console.log(file)
 		lineCounter = 0;
-		MeasureData = new Array();	
-		
+		MeasureData = new Array();
+
 		if(file) {
 			lr = new LineByLineReader(file[0]);
 			contentDisplayObjects.forEach(function(obj) {
@@ -83,8 +82,8 @@
 			alert('magnehelic log file is required!');
 			location.reload();
 		}
-		
-		
+
+
 		lr.on('line', function (line) {
 			if(lineCounter == 1) {
 				MeasureData.push({
@@ -99,7 +98,7 @@
 				// SKIP LINE IF Pressure == 0
 				;
 			} else if(lineCounter > 1) {
-			// 	NORMAL LINE	
+			// 	NORMAL LINE
 				MeasureData.push({
 					index : parseInt(line.substring(4, 6)),
 					date : new Date(line.substring(8, 18)),
@@ -120,43 +119,43 @@
 		lr.on('end', function() {
 			lineCounter = 0;
 			var DataSets = function(MeasureData) {
-			
+
 				dataSetPoss = new Array();
 				dataSetNeg = new Array();
-				
+
 				var loopEndCounter = true;
-				
+
 				MeasureData.forEach(function(MeasureData) {
 						if(MeasureData.pressure >= 0 && loopEndCounter) {
-							
+
 							this.dataSetPoss.push({
 								x: MeasureData.index,
 								y: MeasureData.pressure
 							});
-							
+
 						} else {
 							this.loopEndCounter == false;
-							
+
 							this.dataSetNeg.push({
 								x: MeasureData.index,
 								y: MeasureData.pressure
 							});
 						}
 				});
-				
+
 				// SET INDEXES ROWS
 				var count = 1;
-				
+
 				if(dataSetPoss.length >= dataSetNeg.length) {
 					dataSetPoss.forEach(function(x) {
 						x.x = count;
 						count++;
 					});
-					
+
 					count = 1;
 					dataSetNeg.push({ x:1, y:0 });
 					this.dataSetNeg = dataSetNeg.reverse();
-					
+
 					dataSetNeg.forEach(function(x) {
 						if(count == 1) {
 							x.x = 1;
@@ -166,23 +165,23 @@
 						}
 						count++;
 					});
-					
+
 					dataSetPoss.push({x:dataSetPoss.length + 1, y:0});
 					dataSetNeg.push({x:dataSetPoss[dataSetPoss.length-1].x, y:0});
-					
+
 				} else {
 					alert('STILL WORKING (if negative array is longer...)')
 				}
-							
+
 				return ({dataSetPoss, dataSetNeg});
-			
+
 			}
-			
+
 			var dataSets = new DataSets(MeasureData);
-			
+
 			// MAKE CHART
 			//Chart.defaults.global.omitXLabels = false;
-			
+
 			var ctx = document.getElementById("myChart");
 			var scatterChart = new Chart(ctx, {
 				type: 'line',
@@ -210,12 +209,12 @@
 					}
 				}
 			});
-			
+
 			form($('#header')[0], $('#footer'));
 		});
-		
+
 		var buttons = $('.printButtons');
-		
+
 		$('#gearInput').change(function(data) {
 			if(data.target.value.length > 10) {
 				buttonsManager.showPrintButtons(buttons);
@@ -225,7 +224,7 @@
 				alert('Įveskite aptarnaujamo reguliatoriaus modelį!');
 			}
 		});
-		
+
 		// RELOAD LISTENER
 		$('canvas').dblclick(function() {
 			if(confirm('OPEN NEW LOG FILE?')) {
@@ -237,16 +236,8 @@
 			console.dir(err, stdout, stderr)
 		});
 		*/
-		var screenshot = require('desktop-screenshot');
+    
 
-		screenshot("screenshot.png", function(error, complete) {
-			if(error)
-				console.log("Screenshot failed", error);
-			else
-				console.log("Screenshot succeeded");
-				console.log(complete)
-		});
-		
 	});
   </script>
 </html>

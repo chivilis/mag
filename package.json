@@ -1,0 +1,33 @@
+{
+  "name": "mariusxcivilis@gmail.com",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/electron/electron-quick-start.git"
+  },
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/electron/electron-quick-start/issues"
+  },
+  "homepage": "https://github.com/electron/electron-quick-start#readme",
+  "devDependencies": {
+    "electron-prebuilt": "^1.2.0"
+  },
+  "dependencies": {
+    "chart.js": "^2.2.1",
+    "jquery": "^3.1.0",
+    "line-by-line": "^0.1.5"
+  }
+}

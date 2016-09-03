@@ -1,5 +1,5 @@
 {
-  "name": "electron-quick-start",
+  "name": "mag",
   "version": "1.0.0",
   "description": "Magnehelic_chart_maker",
   "main": "main.js",
@@ -19,9 +19,9 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "bugs": {
-    "url": "https://github.com/electron/electron-quick-start/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/electron/electron-quick-start#readme",
+  "homepage": "https://github.com/chivilis/mag.git",
   "devDependencies": {
     "electron-prebuilt": "^1.2.0"
   },

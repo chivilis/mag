@@ -61,6 +61,11 @@
 	var {dialog} = require('electron').remote;
 	var buttonsManager = require('./ButtonsHandler.js');
 	
+	var shell = require("shelljs");
+	var exec = require('child_process').exec;
+
+	
+	
 	var contentDisplayObjects = new Array($('#header'), $('#footer'));
 	
 	dialog.showOpenDialog({properties: ['openFile', 'singleSelection']}, function(file) {
@@ -219,7 +224,29 @@
 				buttonsManager.hidePrintButtons(buttons);
 				alert('Įveskite aptarnaujamo reguliatoriaus modelį!');
 			}
-		})
+		});
+		
+		// RELOAD LISTENER
+		$('canvas').dblclick(function() {
+			if(confirm('OPEN NEW LOG FILE?')) {
+				location.reload();
+			}
+		});
+		/*
+		exec('screencapture -R10,10,500,500 ./test.jpg', function (err, stdout, stderr) {
+			console.dir(err, stdout, stderr)
+		});
+		*/
+		var screenshot = require('desktop-screenshot');
+
+		screenshot("screenshot.png", function(error, complete) {
+			if(error)
+				console.log("Screenshot failed", error);
+			else
+				console.log("Screenshot succeeded");
+				console.log(complete)
+		});
+		
 	});
   </script>
 </html>

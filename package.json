@@ -1,5 +1,5 @@
 {
-  "name": "mariusxcivilis@gmail.com",
+  "name": "electron-quick-start",
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "main.js",
@@ -27,7 +27,10 @@
   },
   "dependencies": {
     "chart.js": "^2.2.1",
+    "desktop-screenshot": "^0.1.1",
+    "electron-screenshot-service": "^3.3.1",
     "jquery": "^3.1.0",
-    "line-by-line": "^0.1.5"
+    "line-by-line": "^0.1.5",
+    "shelljs": "^0.7.4"
   }
 }

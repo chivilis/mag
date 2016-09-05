@@ -3,8 +3,8 @@ module.exports = function(divHeader, divFooter) {
 	this.divHeader = divHeader || console.log('no header in form.js line: 3');
 	
 	// HEADER FORMATION
-	var logo = $('<div/>', { id: 'headerLogo'});
-	logo[0].style.backgroundImage = 'url("./media/logo.gif")';
+	var logo = $('<img/>', { id: 'headerLogo', class: 'img', src: './media/logo.gif'});
+	//logo[0].style.backgroundImage = 'url("./media/logo.gif")';
 
 	// FOOTER FORMATION
 	var footerLeft = $('<td/>', { id: 'footerL', class: 'footerBox'});
@@ -16,7 +16,7 @@ module.exports = function(divHeader, divFooter) {
 	var footerRight = $('<td/>', { id: 'footerR', class: 'footerBox'});
 	footerRight.html('Įmonės kodas 123561374<br>PVM kodas LT235613716');
 	
-	var footerBoxes = new Array(footerLeft, footerMiddle, footerRight);
+	var footerBoxes = new Array(footerLeft, footerMiddle);//, footerRight);
 	var headerBoxes = new Array(logo);
 	
 	// append HEADERBOXES

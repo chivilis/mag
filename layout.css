@@ -1,20 +1,25 @@
 ::-webkit-input-placeholder {
    font-style: italic;
 }
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+	vertical-align: baseline !important;
+}
+.well {
+	margin-bottom: 0px !important;
+	background-color: #2f2f2f !important;
+	border: 1px solid #989898 !important;
+	color: white;
+}
 body {
 	overflow: hidden;
 }
 canvas {
-	/*
-	zoom: 0.77;
-	margin-left: 4%;
-	*/
-	bottom: 36px;
-    position: relative;
+	position: relative;
     display: block;
-    width: 514px !important;
-    height: 446px !important;
-}
+    width: 452px !important;
+    height: 380px !important;
+    bottom: 16px;
+    left: 25px;
 }
 #buttons {
 	right: 6.9%;
@@ -25,30 +30,36 @@ canvas {
 	position: absolute;
     right: 31px;
     top: 106px;
+	z-index: 2;
 }
 #gearData {
+	/*
 	position: absolute;
     top: 125px;
     left: 18px;
+	*/
 }
 #header {
 	padding-top: 2px;
 	font-size: 14px;
-	width: 474px;
+	//width: 474px;
 }
 #headerLogo {
 	height: 100px;
-    position: relative;
-	bottom: 50px;
+    position: absolute;
+    top: 134px;
     background-repeat: no-repeat;
     background-size: 100px;
-    margin-left: 3rem;
-	padding-top: 4rem;
-    margin-top: 3rem;
-	z-index: -1;
+    /* margin-left: 3rem; */
+    /* padding-top: 4rem; */
+    /* margin-top: 3rem; */
+    /* z-index: -1; */
+    opacity: 0.2;
+    left: 8px;
+	width: 100px;
 }
 #selectTechnician {
-	width: 173px;
+	width: 189px;
     border: 0;
     background-color: white;
     left: -3px;
@@ -63,11 +74,12 @@ canvas {
 #footer {
 	width: 100%;
 	font-size: 13px;
-	bottom: 36px;
+	bottom: 16px;
     position: relative;
 }
 .footerBox {
 	text-align: center;
+	padding: 10px;
 }
 #datepicker:hover {
 	cursor: pointer;
@@ -89,11 +101,14 @@ canvas {
     font-weight: bolder;
 	text-align: center;
 	position: relative;
+	bottom: 22px;
+	/*
     display: flex;
     float: right;
     border: 5px #5f2c2c solid;
     border-radius: 7px;
     right: -40px;
+	*/
 }
 /*
 #footerR {

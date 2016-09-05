@@ -4,6 +4,17 @@ const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 
+const {ipcMain} = require('electron')
+	ipcMain.on('asynchronous-message', (event, arg) => {
+	  console.log(arg)  // prints "ping"
+	  event.sender.send('asynchronous-reply', 'pong')
+	})
+
+	ipcMain.on('synchronous-message', (event, arg) => {
+	  console.log(arg)  // prints "ping"
+	  event.returnValue = 'pong'
+	})
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -16,10 +27,18 @@ function createWindow () {
   mainWindow.setMenu(null);
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/index.html`)
-
+  mainWindow.loadURL(`file://${__dirname}/index.html`);
+	
+  mainWindow.webContents.on('did-finish-load', () => {
+	setTimeout(function() {
+		mainWindow.webContents.print()
+	}, 5000)
+  });
+	
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
+  //console.log(mainWindow.webContents)
+  //mainWindow.webContents.print()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -34,6 +53,7 @@ app.commandLine.appendSwitch('enable-usermedia-screen-capturing');
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow)
+//let contents = mainWindow.webContents
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {

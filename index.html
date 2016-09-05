@@ -4,52 +4,57 @@
     <meta charset="UTF-8">
 
 	<link rel="stylesheet" type="text/css" href="layout.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="./jquery-ui.min.css">
 
 	<!--<script src="./jquery.js"></script>-->
 	<script type="text/javascript" src="./jquery.min.js"></script>
+  	<script type="text/javascript" src="./jquery3.min.js"></script>
 	<script type="text/javascript" src="./jquery-ui.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
     <title>BREATHING_RESISTANCE_ANALYSIS</title>
   </head>
 
   <body>
-  <div id='header' style='display: none;'>
-	<table id='gearData'>
-		<tr>
-			<td style='text-align:right'>GEAR:</td>
-			<td><input id='gearInput' type='text' name='enteredGear' placeholder='required field...'/></td>
-		</tr>
-		<tr>
-			<td style='text-align:right'>SERVICE DATE:</td>
-			<td><input type="text" id="datepicker"></td>
-		</tr>
-		<tr>
-			<td style='text-align:right'>TECHNICIAN:</td>
-			<td>
-				<select id='selectTechnician'>
-					<option value='Gintautas Krakauskas'>Gintautas Krakauskas</option>
-					<option value='Valiera'>Direktorius Valiera</option>
-				</select>
-			</td>
-		</tr>
-	</table>
-	<table id='nextService'>
-		<tr>
-			<td>FOLOWING SERVICE</td>
-		</tr>
-		<tr id='nextServiceDate'></tr>
-	</table>
-	<table id='buttons' style='position: absolute; right: 31px; top: 95px;'>
-		<tr>
-			<td><button style='display: none' id='jpgButton' class='printButtons' type="button">Print .jpg</button></td>
-			<td><button style='display: none' id='pdfButton' class='printButtons' type="button">Print .pdf</button></td>
-			<td><button style='display: none' id='printButton' class='printButtons' type="button">Print</button></td>
-		</tr>
-	</table>
-  </div>
-  <canvas id="myChart" width="400" height="400"></canvas>
-  <table id='footer' style='display: none'></table>
+    <div class='container'>
+      <div id='header' style='display: none;'>
+    	<table id='gearData'>
+    		<tr>
+    			<td style='text-align:right'>GEAR:</td>
+    			<td><input id='gearInput' type='text' name='enteredGear' placeholder='required field...'/></td>
+    		</tr>
+    		<tr>
+    			<td style='text-align:right'>SERVICE DATE:</td>
+    			<td><input type="text" id="datepicker"></td>
+    		</tr>
+    		<tr>
+    			<td style='text-align:right'>TECHNICIAN:</td>
+    			<td>
+    				<select id='selectTechnician'>
+    					<option value='Gintautas Krakauskas'>Gintautas Krakauskas</option>
+    					<option value='Valiera'>Direktorius Valiera</option>
+    				</select>
+    			</td>
+    		</tr>
+    	</table>
+    	<table id='nextService'>
+    		<tr>
+    			<td>FOLOWING SERVICE</td>
+    		</tr>
+    		<tr id='nextServiceDate'></tr>
+    	</table>
+    	<table id='buttons' style='position: absolute; right: 31px; top: 95px;'>
+    		<tr>
+    			<td><button style='display: none' id='jpgButton' class='printButtons' type="button">Print .jpg</button></td>
+    			<td><button style='display: none' id='pdfButton' class='printButtons' type="button">Print .pdf</button></td>
+    			<td><button style='display: none' id='printButton' class='printButtons' type="button">Print</button></td>
+    		</tr>
+    	</table>
+      </div>
+      <canvas id="myChart" width="400" height="400"></canvas>
+      <table id='footer' style='display: none'></table>
+    </div>
   </body>
 
   <script>
@@ -236,7 +241,7 @@
 			console.dir(err, stdout, stderr)
 		});
 		*/
-    
+
 
 	});
   </script>

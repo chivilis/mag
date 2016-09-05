@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="./jquery-ui.min.css">
 
 	<!--<script src="./jquery.js"></script>-->
-	
+
 	<script type="text/javascript" src="./jquery.min.js"></script>
 	<script type="text/javascript" src="./jquery-ui.min.js"></script>
 	<!--<script type="text/javascript" src="client-rpc.js"></script>-->
@@ -47,7 +47,7 @@
     		<tr>
     			<td><button style='display: none' id='jpgButton' class='printButtons btn btn-xs btn-success' type="button">Print .jpg</button></td>
     			<td><button style='display: none' id='pdfButton' class='printButtons btn btn-xs btn-success' type="button">Print .pdf</button></td>
-    			<td><button style='display: none' id='printButton' class='printButtons btn btn-xs btn-success' type="button">Print</button></td>
+    			<td><button style='display: none' id='printButton' class='printButtons btn btn-xs btn-success' type="button" onclick="printOnPrinter()">Print</button></td>
     		</tr>
     	</table>
       </div>
@@ -64,8 +64,25 @@
 	var form = require('./form.js');
 	var {dialog} = require('electron').remote;
 	var buttonsManager = require('./ButtonsHandler.js');
-
+  const {ipc} = require('electron');
 	var exec = require('child_process').exec;
+
+
+  const {ipcRenderer} = require('electron')
+//console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
+/*
+ipcRenderer.on('asynchronous-reply', (event, arg) => {
+  console.log(arg) // prints "pong"
+})
+*/
+
+
+
+  function printOnPrinter() {
+    ipcRenderer.send('print');
+    console.log('sent fron client')
+  }
+
 
 
 
@@ -235,7 +252,14 @@
 			if(confirm('OPEN NEW LOG FILE?')) {
 				location.reload();
 			}
+
+    // FIX CSS footer
+
+    // BUTTONS ACTIONS
 		});
+
+    console.log($('#myChart')[0].width + 80 + 'px')
+    //$('#myChart').height();//css({height: (});
 		/*
 		exec('screencapture -R10,10,500,500 ./test.jpg', function (err, stdout, stderr) {
 			console.dir(err, stdout, stderr)
@@ -253,8 +277,7 @@
 				console.log(complete)
 		});
 		*/
-		const {ipcRenderer} = require('electron')
-		console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
+		//console.log(ipc.sendSync('synchronous-message', 'ping')) // prints "pong"
 
 		ipcRenderer.on('asynchronous-reply', (event, arg) => {
 		  try {
@@ -265,7 +288,7 @@
 		  }
 		})
 		ipcRenderer.send('asynchronous-message', 'ping')
-		
+
 	});
   </script>
 </html>

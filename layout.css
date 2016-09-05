@@ -1,8 +1,14 @@
 ::-webkit-input-placeholder {
    font-style: italic;
 }
+.form-control {
+  -webkit-box-shadow: 0 !important;
+}
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
 	vertical-align: baseline !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid #ddd !important;
+
 }
 .well {
 	margin-bottom: 0px !important;
@@ -17,7 +23,7 @@ canvas {
 	position: relative;
     display: block;
     width: 452px !important;
-    height: 380px !important;
+    //height: 380px !important;
     bottom: 16px;
     left: 25px;
 }
@@ -55,12 +61,13 @@ canvas {
     /* margin-top: 3rem; */
     /* z-index: -1; */
     opacity: 0.2;
-    left: 8px;
-	width: 100px;
+    left: 24px;
+	   width: 100px;
+     -webkit-filter: grayscale(100%) invert(100%);
 }
 #selectTechnician {
 	width: 189px;
-    border: 0;
+    //border: 0;
     background-color: white;
     left: -3px;
     position: relative;

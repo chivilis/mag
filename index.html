@@ -237,6 +237,7 @@
 			console.dir(err, stdout, stderr)
 		});
 		*/
+		/*
 		var screenshot = require('desktop-screenshot');
 
 		screenshot("screenshot.png", function(error, complete) {
@@ -246,7 +247,11 @@
 				console.log("Screenshot succeeded");
 				console.log(complete)
 		});
-		
+		*/
+		var exec = require('child_process').exec;
+exec('printhtml.exe file=index.html', function(err, data) {  
+    console.log(data.toString());                       
+}); 
 	});
   </script>
 </html>

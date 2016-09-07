@@ -20,17 +20,23 @@ app.on('ready', function() {
 	mainWindow.webContents.openDevTools();
   
 	ipcMain.on('print', function(event, data) {
-		mainWindow.webContents.print(function() {
+		mainWindow.webContents.print([{printBackground: true}],function() {
 			event.sender.send('printDone');
 		});
 	});
 
 	ipcMain.on('printPdf', function(event, data) {
-		mainWindow.webContents.printToPDF({landscape: false }, function(err, data) {
+		e = event;
+		mainWindow.webContents.printToPDF({landscape: false, printBackground: true }, function(err, data) {
 			dialog.showSaveDialog({title: 'Save PDF file', filters: [{name: ' ', extensions: ['pdf']}] },function(fileName) {
-				fs.writeFile(fileName, data, function(err) {
-					event.sender.send('printDone');
-				});
+				try{
+					fs.writeFile(fileName, data, function(err) {
+						e.sender.send('printDone');
+					});
+				}
+				catch(err2) {
+					e.sender.send('printDone');
+				}
 			});
 		});
 	});

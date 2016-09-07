@@ -22,10 +22,11 @@ body {
 canvas {
 	position: relative;
     display: block;
-    width: 452px !important;
+    //width: 452px !important;
     //height: 380px !important;
     bottom: 16px;
-    left: 25px;
+    //left: 25px;
+	margin: auto;
 }
 #buttons {
 	right: 6.9%;

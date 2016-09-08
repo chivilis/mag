@@ -18,11 +18,13 @@ app.on('ready', function() {
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
 
 	mainWindow.webContents.openDevTools();
+	
+	//console.log(mainWindow.webContents)
   
 	ipcMain.on('print', function(event, data) {
-		mainWindow.webContents.print([{printBackground: true}],function() {
+		mainWindow.webContents.print([{printBackground: true}], function() {
 			event.sender.send('printDone');
-		});
+		});		
 	});
 
 	ipcMain.on('printPdf', function(event, data) {

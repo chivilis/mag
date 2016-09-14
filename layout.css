@@ -16,16 +16,31 @@
 	border: 1px solid #989898 !important;
 	color: white;
 }
+#nextService p {
+	color: yellow;
+}
+@media print {
+      h1 {
+        color: rgba(0, 0, 0, 0);
+        text-shadow: 0 0 0 #ccc;
+      }
 body {
 	overflow: hidden;
 }
 canvas {
+	/*
 	position: relative;
     display: block;
-    width: 452px !important;
+    //width: 452px !important;
     //height: 380px !important;
     bottom: 16px;
-    left: 25px;
+    //left: 25px;
+	margin: auto;
+	*/
+	max-height: 370px;
+}
+#containerCanvas {
+	;
 }
 #buttons {
 	right: 6.9%;
@@ -81,7 +96,7 @@ canvas {
 #footer {
 	width: 100%;
 	font-size: 13px;
-	bottom: 16px;
+	bottom: 0px;
     position: relative;
 }
 .footerBox {

@@ -46,12 +46,14 @@
     	<table id='buttons' style='position: absolute; right: 31px; top: 95px; z-index: 2'>
     		<tr>
     			<td><button style='display: none' id='jpgButton' class='printButtons btn btn-xs btn-success' type="button">Print .jpg</button></td>
-    			<td><button style='display: none' id='pdfButton' class='printButtons btn btn-xs btn-success' type="button">Print .pdf</button></td>
+    			<td><button style='display: none' id='pdfButton' class='printButtons btn btn-xs btn-success' type="button" onclick="printPDF()">Print .pdf</button></td>
     			<td><button style='display: none' id='printButton' class='printButtons btn btn-xs btn-success' type="button" onclick="printOnPrinter()">Print</button></td>
     		</tr>
     	</table>
       </div>
-      <canvas id="myChart" width="400" height="400"></canvas>
+	  <div id='containerCanvas' class='container-fluid'>
+		<canvas id="myChart" width="400" height="400"></canvas>
+	  </div>
       <table id='footer' class='footer' style='display: none'></table>
     </div>
   </body>
@@ -68,15 +70,38 @@
 
 
   const {ipcRenderer} = require('electron')
+<<<<<<< HEAD
+=======
+//console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
+/*
+ipcRenderer.on('asynchronous-reply', (event, arg) => {
+  console.log(arg) // prints "pong"
+})
+*/
+  // PDF PRINT DONE INDICATOR
+  ipcRenderer.on('printDone', function() {
+	$('#buttons').show();
+  });
+  
+  
+  function printPDF() {
+	$('#buttons').hide();
+	ipcRenderer.send('printPdf');
+  }
+>>>>>>> 31fe0a00ad7fc90b6f91da8eebaf9b239bc54313
 
   function printOnPrinter() {
+	$('#buttons').hide();
     ipcRenderer.send('print');
+<<<<<<< HEAD
     //console.log('sent fron client')
+=======
+>>>>>>> 31fe0a00ad7fc90b6f91da8eebaf9b239bc54313
   }
 
 	var contentDisplayObjects = new Array($('#header'), $('#footer'));
 
-	dialog.showOpenDialog({properties: ['openFile', 'singleSelection']}, function(file) {
+	dialog.showOpenDialog({properties: ['openFile', 'singleSelection'], filters: [{name:'', extensions:['txt']}]}, function(file) {
 		console.log(file)
 		lineCounter = 0;
 		MeasureData = new Array();
@@ -194,6 +219,8 @@
 
 			var ctx = document.getElementById("myChart");
 			var scatterChart = new Chart(ctx, {
+				responsive: true,
+				maintainAspectRatio: false,
 				type: 'line',
 				data: {
 					datasets: [
@@ -221,6 +248,8 @@
 			});
 
 			form($('#header')[0], $('#footer'));
+			//ctx.getContext("2d").canvas.width = 300;
+			//$('canvas').css({height : $(document).height() - 80 + 'px !important'});//css({height: (});
 		});
 
 		var buttons = $('.printButtons');
@@ -246,8 +275,8 @@
     // BUTTONS ACTIONS
 		});
 
-    console.log($('#myChart')[0].width + 80 + 'px')
-    //$('#myChart').height();//css({height: (});
+    //console.log($('#myChart')[0].width + 80 + 'px')
+	
 		/*
 		exec('screencapture -R10,10,500,500 ./test.jpg', function (err, stdout, stderr) {
 			console.dir(err, stdout, stderr)

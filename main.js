@@ -59,12 +59,10 @@ app.on('ready', function() {
 		}
 		*/
 		//console.log(mainWindow.webContents)
-		ipcMain.on('print', (event, arg) => {
-		  console.log(arg)  // prints "ping"
-			console.log('got by side')
-			mainWindow.webContents.print();
 
-		})
+	ipcMain.on('print', (event, arg) => {
+		mainWindow.webContents.print();
+	});
 	//	console.log(arg + ' received')
 //});
 	mainWindow.on('closed', function () {

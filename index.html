@@ -64,27 +64,15 @@
 	var form = require('./form.js');
 	var {dialog} = require('electron').remote;
 	var buttonsManager = require('./ButtonsHandler.js');
-  const {ipc} = require('electron');
 	var exec = require('child_process').exec;
 
 
   const {ipcRenderer} = require('electron')
-//console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
-/*
-ipcRenderer.on('asynchronous-reply', (event, arg) => {
-  console.log(arg) // prints "pong"
-})
-*/
-
-
 
   function printOnPrinter() {
     ipcRenderer.send('print');
-    console.log('sent fron client')
+    //console.log('sent fron client')
   }
-
-
-
 
 	var contentDisplayObjects = new Array($('#header'), $('#footer'));
 

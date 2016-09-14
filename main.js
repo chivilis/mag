@@ -9,11 +9,11 @@ var mainWindow = null;
 app.commandLine.appendSwitch('enable-usermedia-screen-capturing');
 
 app.on('ready', function() {
-	
+
 	mainWindow = new BrowserWindow({width: 570, height: 800/*, frame: false*/,
 								 movable: true,
 								 resizable: true});
-<<<<<<< HEAD
+//<<<<<<< HEAD
   mainWindow.setMenu(null);
 
   // and load the index.html of the app.
@@ -36,28 +36,31 @@ app.on('ready', function() {
 		*/
 		//console.log(mainWindow.webContents)
 
-	ipcMain.on('print', (event, arg) => {
-		mainWindow.webContents.print();
-	});
-	//	console.log(arg + ' received')
-//});
-=======
+
 	mainWindow.setMenu(null);
 
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
 
 	mainWindow.webContents.openDevTools();
-	
-	//console.log(mainWindow.webContents)
+
 	ipcMain.on('print', function(event, data) {
-		mainWindow.webContents.print([{printBackground: true}], function() {
+
+		function printPrinter(callback) {
+			mainWindow.webContents.print([{printBackground: true}], function() {
+				event.sender.send('printDone');
+			});
+			callback();
+		}
+
+		printPrinter(function() {
 			event.sender.send('printDone');
-		});		
+		});
+		
 	});
 
 	ipcMain.on('printPdf', function(event, data) {
 		e = event;
-		mainWindow.webContents.printToPDF({landscape: false, printBackground: false }, function(err, data) {
+		mainWindow.webContents.printToPDF({landscape: false, printBackground: true }, function(err, data) {
 			dialog.showSaveDialog({title: 'Save PDF file', filters: [{name: ' ', extensions: ['pdf']}] },function(fileName) {
 				try{
 					fs.writeFile(fileName, data, function(err) {
@@ -70,13 +73,13 @@ app.on('ready', function() {
 			});
 		});
 	});
-		
->>>>>>> 31fe0a00ad7fc90b6f91da8eebaf9b239bc54313
+
+//>>>>>>> 31fe0a00ad7fc90b6f91da8eebaf9b239bc54313
 	mainWindow.on('closed', function () {
 		;
 	});
 });
- 
+
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
     app.quit()

@@ -61,42 +61,35 @@
   <script>
     // You can also require other files to run in this process
     require('./renderer.js');
-	var Chart = require('chart.js');
-	var LineByLineReader = require('line-by-line');
-	var form = require('./form.js');
-	var {dialog} = require('electron').remote;
-	var buttonsManager = require('./ButtonsHandler.js');
-	var exec = require('child_process').exec;
+  	var Chart = require('chart.js');
+  	var LineByLineReader = require('line-by-line');
+  	var form = require('./form.js');
+  	var {dialog} = require('electron').remote;
+  	var buttonsManager = require('./ButtonsHandler.js');
+  	var exec = require('child_process').exec;
 
 
-  const {ipcRenderer} = require('electron')
-<<<<<<< HEAD
-=======
-//console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
-/*
-ipcRenderer.on('asynchronous-reply', (event, arg) => {
-  console.log(arg) // prints "pong"
-})
-*/
+    const {ipcRenderer} = require('electron')
+
   // PDF PRINT DONE INDICATOR
   ipcRenderer.on('printDone', function() {
-	$('#buttons').show();
+	   $('#buttons').show();
   });
-  
-  
+
+
   function printPDF() {
-	$('#buttons').hide();
-	ipcRenderer.send('printPdf');
+	   $('#buttons').hide();
+	    ipcRenderer.send('printPdf');
   }
->>>>>>> 31fe0a00ad7fc90b6f91da8eebaf9b239bc54313
+//>>>>>>> 31fe0a00ad7fc90b6f91da8eebaf9b239bc54313
 
   function printOnPrinter() {
-	$('#buttons').hide();
-    ipcRenderer.send('print');
-<<<<<<< HEAD
+	   $('#buttons').hide();
+     ipcRenderer.send('print');
+//<<<<<<< HEAD
     //console.log('sent fron client')
-=======
->>>>>>> 31fe0a00ad7fc90b6f91da8eebaf9b239bc54313
+//=======
+//>>>>>>> 31fe0a00ad7fc90b6f91da8eebaf9b239bc54313
   }
 
 	var contentDisplayObjects = new Array($('#header'), $('#footer'));
@@ -270,42 +263,7 @@ ipcRenderer.on('asynchronous-reply', (event, arg) => {
 				location.reload();
 			}
 
-    // FIX CSS footer
-
-    // BUTTONS ACTIONS
 		});
-
-    //console.log($('#myChart')[0].width + 80 + 'px')
-	
-		/*
-		exec('screencapture -R10,10,500,500 ./test.jpg', function (err, stdout, stderr) {
-			console.dir(err, stdout, stderr)
-		});
-		*/
-		// <<<<<<< HEAD
-		/*
-		var screenshot = require('desktop-screenshot');
-
-		screenshot("screenshot.png", function(error, complete) {
-			if(error)
-				console.log("Screenshot failed", error);
-			else
-				console.log("Screenshot succeeded");
-				console.log(complete)
-		});
-		*/
-		//console.log(ipc.sendSync('synchronous-message', 'ping')) // prints "pong"
-
-		ipcRenderer.on('asynchronous-reply', (event, arg) => {
-		  try {
-			console.log(arg)
-		  }
-		  catch(err) {
-			console.log(err)
-		  }
-		})
-		ipcRenderer.send('asynchronous-message', 'ping')
-
 	});
   </script>
 </html>

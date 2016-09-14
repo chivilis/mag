@@ -20,7 +20,6 @@ app.on('ready', function() {
 	mainWindow.webContents.openDevTools();
 	
 	//console.log(mainWindow.webContents)
-  
 	ipcMain.on('print', function(event, data) {
 		mainWindow.webContents.print([{printBackground: true}], function() {
 			event.sender.send('printDone');
@@ -29,7 +28,7 @@ app.on('ready', function() {
 
 	ipcMain.on('printPdf', function(event, data) {
 		e = event;
-		mainWindow.webContents.printToPDF({landscape: false, printBackground: true }, function(err, data) {
+		mainWindow.webContents.printToPDF({landscape: false, printBackground: false }, function(err, data) {
 			dialog.showSaveDialog({title: 'Save PDF file', filters: [{name: ' ', extensions: ['pdf']}] },function(fileName) {
 				try{
 					fs.writeFile(fileName, data, function(err) {

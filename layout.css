@@ -16,6 +16,14 @@
 	border: 1px solid #989898 !important;
 	color: white;
 }
+#nextService p {
+	color: yellow;
+}
+@media print {
+      h1 {
+        color: rgba(0, 0, 0, 0);
+        text-shadow: 0 0 0 #ccc;
+      }
 body {
 	overflow: hidden;
 }

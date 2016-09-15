@@ -7,23 +7,23 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="./jquery-ui.min.css">
 
-	<!--<script src="./jquery.js"></script>-->
-
 	<script type="text/javascript" src="./jquery.min.js"></script>
 	<script type="text/javascript" src="./jquery-ui.min.js"></script>
-	<!--<script type="text/javascript" src="client-rpc.js"></script>-->
-	<!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
 
-    <title>BREATHING_RESISTANCE_ANALYSIS</title>
+    <title></title>
   </head>
 
   <body>
     <div class='container'>
       <div id='header' class='row' style='display:none'>
     	<table id='gearData' class='table'>
+        <tr>
+            <td style='text-align:right'>OWNER:</td>
+            <td><input id='ownerInput' class='gearInput' type='text' name='enteredOwner'</input></td>
+        </tr>
     		<tr>
     			<td style='text-align:right'>GEAR:</td>
-    			<td><input id='gearInput' type='text' name='enteredGear' placeholder='required field...'/></td>
+    			<td><input id='gearInput' class='gearInput' type='text' name='enteredGear' placeholder='required field...' value='XXXXXXXXXXX'/></td>
     		</tr>
     		<tr>
     			<td style='text-align:right; white-space:nowrap'>SERVICE DATE:</td>
@@ -43,9 +43,9 @@
     		<p>FOLOWING SERVICE</p>
     		<p id='nextServiceDate'></p>
     	</div>
-    	<table id='buttons' style='position: absolute; right: 31px; top: 95px; z-index: 2'>
+    	<table id='buttons' style='position: absolute; right: 31px; top: 132px; z-index: 2'>
     		<tr>
-    			<td><button style='display: none' id='jpgButton' class='printButtons btn btn-xs btn-success' type="button">Print .jpg</button></td>
+    			<!--<td><button style='display: none' id='jpgButton' class='printButtons btn btn-xs btn-success' type="button">Print .jpg</button></td>-->
     			<td><button style='display: none' id='pdfButton' class='printButtons btn btn-xs btn-success' type="button" onclick="printPDF()">Print .pdf</button></td>
     			<td><button style='display: none' id='printButton' class='printButtons btn btn-xs btn-success' type="button" onclick="printOnPrinter()">Print</button></td>
     		</tr>
@@ -81,21 +81,15 @@
 	   $('#buttons').hide();
 	    ipcRenderer.send('printPdf');
   }
-//>>>>>>> 31fe0a00ad7fc90b6f91da8eebaf9b239bc54313
 
   function printOnPrinter() {
 	   $('#buttons').hide();
      ipcRenderer.send('print');
-//<<<<<<< HEAD
-    //console.log('sent fron client')
-//=======
-//>>>>>>> 31fe0a00ad7fc90b6f91da8eebaf9b239bc54313
   }
 
 	var contentDisplayObjects = new Array($('#header'), $('#footer'));
 
 	dialog.showOpenDialog({properties: ['openFile', 'singleSelection'], filters: [{name:'', extensions:['txt']}]}, function(file) {
-		console.log(file)
 		lineCounter = 0;
 		MeasureData = new Array();
 
@@ -106,7 +100,7 @@
 			});
 		}
 		else {
-			alert('magnehelic log file is required!');
+			alert('LOG FILE IS REQUIRED!');
 			location.reload();
 		}
 
@@ -139,7 +133,7 @@
 					lineCounter++;
 				}
 				else {
-					alert('Invalid log file content!');
+					alert('INVALID FILE CONTENT!');
 					location.reload();
 				}
 			}
@@ -253,7 +247,7 @@
 			}
 			else {
 				buttonsManager.hidePrintButtons(buttons);
-				alert('Įveskite aptarnaujamo reguliatoriaus modelį!');
+				alert('ENTER GEAR DATA!');
 			}
 		});
 

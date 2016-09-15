@@ -3,7 +3,7 @@ module.exports = function(divHeader, divFooter) {
 	this.divHeader = divHeader || console.log('no header in form.js line: 3');
 
 	// HEADER FORMATION
-	var logo = $('<img/>', { id: 'headerLogo', class: 'img', src: './media/logo.gif'});
+	var logo = $('<img/>', { id: 'headerLogo', draggable: 'false', class: 'img', src: './media/logo.gif'});
 	//logo[0].style.backgroundImage = 'url("./media/logo.gif")';
 
 	// FOOTER FORMATION
@@ -22,7 +22,7 @@ module.exports = function(divHeader, divFooter) {
 	// append HEADERBOXES
 	headerBoxes.forEach(function(box) {
 		//box.css()
-		console.log($(window).height());
+		//console.log($(window).height());
 		box.appendTo(this.divHeader);
 	});
 	// append FOOTERBOXES
@@ -32,11 +32,14 @@ module.exports = function(divHeader, divFooter) {
 
 	// DATEPICKER SET
 	function dateAddYear(date) {
+		console.log(date)
+		console.log(date.substring(0, date.length-2) + (parseInt(date.substring(date.length-2, date.length)) + 1) )
 		return date.substring(0, date.length-2) + (parseInt(date.substring(date.length-2, date.length)) + 1);
 	}
 
 
-	$('#datepicker').datepicker();
+	//$('#datepicker').datepicker();
+	$( "#datepicker").datepicker({dateFormat: 'dd/mm/yy'});
 	$('#datepicker').datepicker('setDate', new Date());
 
 	$('#nextServiceDate').text( dateAddYear($('#datepicker')[0].value) );

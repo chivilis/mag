@@ -1,8 +1,23 @@
+html {
+  -webkit-user-select: none;
+}
+.btn:focus {
+  outline: 0 !important;
+}
 ::-webkit-input-placeholder {
    font-style: italic;
 }
 .form-control {
   -webkit-box-shadow: 0 !important;
+  border-color: #ffffff !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+.form-control:focus {
+    border-color: #ffffff !important;
+    outline: 0 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
 }
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
 	vertical-align: baseline !important;
@@ -40,15 +55,14 @@ canvas {
 #containerCanvas {
 	;
 }
+#buttons:focus {
+  outline: 0 !important;
+}
 #buttons {
 	right: 6.9%;
-	/*
 	position: absolute;
-    top: 111px;
-    */
-	position: absolute;
-    right: 31px;
-    top: 106px;
+  right: 31px;
+  top: 132px;
 	z-index: 2;
 }
 #gearData {
@@ -64,9 +78,9 @@ canvas {
 	//width: 474px;
 }
 #headerLogo {
-	height: 100px;
+	  height: 100px;
     position: absolute;
-    top: 134px;
+    top: 173px;
     background-repeat: no-repeat;
     background-size: 100px;
     /* margin-left: 3rem; */
@@ -75,8 +89,9 @@ canvas {
     /* z-index: -1; */
     opacity: 0.2 !important;
     left: 24px;
-	   width: 100px;
-     -webkit-filter: grayscale(100%) invert(100%) !important;
+	  width: 100px;
+    -webkit-filter: grayscale(100%) invert(100%) !important;
+    -webkit-user-drag: none;
 }
 #selectTechnician {
 	width: 189px;
@@ -114,10 +129,17 @@ canvas {
     width: 386px;
 }
 #gearInput {
+  /*
 	//text-align: center;
-	border: 0;
-    padding-left: 5px;
-    width: 386px;
+  border: 0;
+  padding-left: 5px;
+  width: 386px;
+  */
+}
+.gearInput {
+  border: 0;
+  padding-left: 5px;
+  width: 386px;
 }
 #nextService {
 	font-size: large;

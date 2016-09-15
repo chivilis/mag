@@ -3,6 +3,8 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const {ipcMain, dialog} = require('electron');
 const fs = require('fs');
+const menuTemplate = require('./osxMenuTemplate.js');
+const {Menu} = require('electron')
 
 var mainWindow = null;
 
@@ -10,34 +12,21 @@ app.commandLine.appendSwitch('enable-usermedia-screen-capturing');
 
 app.on('ready', function() {
 
-	mainWindow = new BrowserWindow({width: 570, height: 800/*, frame: false*/,
+	mainWindow = new BrowserWindow({width: 520, height: 800/*, frame: false*/,
 								 movable: true,
-								 resizable: true});
-//<<<<<<< HEAD
-  mainWindow.setMenu(null);
+								 resizable: false,
+								 icon: './media/DIUGONIS.ico',
+								 title: ""
+							 });
 
+	Menu.setApplicationMenu(new menuTemplate());
+	mainWindow.setMenu(null);
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 
-  mainWindow.webContents.openDevTools()
-  //console.log(mainWindow.webContents)
-  //mainWindow.webContents.print()
+  //mainWindow.webContents.openDevTools()
 
-	//ipc.on('print', function() {
-		///console.log(arg)  // prints "ping"
-		/*
-		if(arg == '1') {
-			event.sender.send('asynchronous-reply', 'arg is 1')
-			mainWindow.webContents.print();
-		}
-		else {
-			event.sender.send('asynchronous-reply', 'arg is ' + arg);
-		}
-		*/
-		//console.log(mainWindow.webContents)
-
-
-	mainWindow.setMenu(null);
+	//mainWindow.title = 'none';
 
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
 
@@ -55,7 +44,7 @@ app.on('ready', function() {
 		printPrinter(function() {
 			event.sender.send('printDone');
 		});
-		
+
 	});
 
 	ipcMain.on('printPdf', function(event, data) {
@@ -73,8 +62,6 @@ app.on('ready', function() {
 			});
 		});
 	});
-
-//>>>>>>> 31fe0a00ad7fc90b6f91da8eebaf9b239bc54313
 	mainWindow.on('closed', function () {
 		;
 	});

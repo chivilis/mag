@@ -5,8 +5,7 @@ module.exports = function() {
 
   var template = [
     {
-      label: 'DIUGONIS
-      '
+      label: 'DIUGONIS'
       /*
       submenu: [
         {

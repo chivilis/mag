@@ -32,8 +32,6 @@ module.exports = function(divHeader, divFooter) {
 
 	// DATEPICKER SET
 	function dateAddYear(date) {
-		console.log(date)
-		console.log(date.substring(0, date.length-2) + (parseInt(date.substring(date.length-2, date.length)) + 1) )
 		return date.substring(0, date.length-2) + (parseInt(date.substring(date.length-2, date.length)) + 1);
 	}
 

@@ -155,8 +155,11 @@ canvas {
     right: -40px;
 	*/
 }
-/*
-#footerR {
-	float: right;
+@media print
+{
+    @page
+    {
+        margin-left: 25mm;
+        margin-right: 50mm;
+    }
 }
-*/

@@ -23,7 +23,7 @@
         </tr>
     		<tr>
     			<td style='text-align:right'>GEAR:</td>
-    			<td><input id='gearInput' class='gearInput' type='text' name='enteredGear' placeholder='required field...' value='XXXXXXXXXXX'/></td>
+    			<td><input id='gearInput' class='gearInput' type='text' name='enteredGear' placeholder='required field...' value=''/></td>
     		</tr>
     		<tr>
     			<td style='text-align:right; white-space:nowrap'>SERVICE DATE:</td>
@@ -67,7 +67,8 @@
   	var {dialog} = require('electron').remote;
   	var buttonsManager = require('./ButtonsHandler.js');
   	var exec = require('child_process').exec;
-
+	
+	const RANGE_Y = 5;
 
     const {ipcRenderer} = require('electron')
 
@@ -200,10 +201,24 @@
 			}
 
 			var dataSets = new DataSets(MeasureData);
+			
+			function getRangeLine(obj) {
+				var rangeLine = new Array();
+				for(var i = 0; i < obj.length; i++) {
+					if(i == 0) {
+						rangeLine.push({x : i, y : RANGE_Y});
+					} else if (i == obj.length-1) {
+						rangeLine.push({x : i+2, y : RANGE_Y});
+					} else {
+						continue;
+					}
+				}
+console.log(rangeLine)
+				return rangeLine;
+			}
 
 			// MAKE CHART
-			//Chart.defaults.global.omitXLabels = false;
-
+//console.log(dataSets.dataSetPoss)
 			var ctx = document.getElementById("myChart");
 			var scatterChart = new Chart(ctx, {
 				responsive: true,
@@ -212,16 +227,23 @@
 				data: {
 					datasets: [
 					{
-						//label: '+',
 						data: dataSets.dataSetPoss
 					},
 					{
-						//label: null,
 						data: dataSets.dataSetNeg
-					}]
+					},
+					{
+						steppedLine: false,
+						fill: false,
+						fillColor: "rgba(151,187,205,0.2)",
+						pointBorderColor: "rgba(255,45,46,0.2)",
+						borderColor: "rgba(255,45,46,0.2)",
+						data: getRangeLine(dataSets.dataSetNeg)
+					}
+					]
+					
 				},
 				options: {
-					// ERASE LABELS
 					legend: {
 						display: false
 					},

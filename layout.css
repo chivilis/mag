@@ -21,16 +21,17 @@ html {
 }
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
 	vertical-align: baseline !important;
-  border-top: 0 !important;
-  border-bottom: 1px solid #ddd !important;
-
+	border-top: 0 !important;
+	border-bottom: 1px solid #ddd !important;
+	position: relative;
+	left: -61px;
 }
 .well {
 	margin-bottom: 0px !important;
 	background-color: #2f2f2f !important;
 	border: 1px solid #989898 !important;
 	color: #ffffff;
-  -webkit-print-color-adjust: economy | exact
+	-webkit-print-color-adjust: economy | exact
 
 }
 #nextService p {
@@ -68,7 +69,7 @@ canvas {
 	//width: 474px;
 }
 #headerLogo {
-	  height: 100px;
+	height: 100px;
     position: absolute;
     top: 173px;
     background-repeat: no-repeat;
@@ -87,7 +88,7 @@ canvas {
 	width: 189px;
     //border: 0;
     background-color: white;
-    left: -3px;
+    left: -4%;
     position: relative;
 }
 #footer::before {
@@ -145,6 +146,11 @@ canvas {
     right: -40px;
 	*/
 }
+.printButtons {
+	margin-right: 4px;
+}
+
+
 @media print
 {
     @page

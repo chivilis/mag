@@ -1,11 +1,11 @@
-	var chartMaker = require('./chartMaker.js');
+	var chartMaker = require('./chartMaker');
   	var LineByLineReader = require('line-by-line');
-  	var form = require('./form.js');
+  	var form = require('./form');
   	var {dialog} = require('electron').remote;
-  	var buttonsManager = require('./ButtonsHandler.js');
+  	var buttonsManager = require('./ButtonsHandler');
   	var exec = require('child_process').exec;
 
-    const {ipcRenderer} = require('electron')
+    const {ipcRenderer} = require('electron');
 	
 	module.exports = function() {
 		// PDF PRINT DONE INDICATOR
@@ -14,15 +14,7 @@
 		});
 
 
-		function printPDF() {
-		   $('#buttons').hide();
-			ipcRenderer.send('printPdf');
-		}
-
-		function printOnPrinter() {
-		   $('#buttons').hide();
-		 ipcRenderer.send('print');
-		}
+		
 
 		var contentDisplayObjects = new Array($('#header'), $('#footer'));
 
@@ -140,13 +132,12 @@
 				
 				
 
-				// MAKE CHART
-		//console.log(dataSets.dataSetPoss)
 				/* CHART */
 				chartMaker(dataSets);
+				
+				
 				form($('#header')[0], $('#footer'));
-				//ctx.getContext("2d").canvas.width = 300;
-				//$('canvas').css({height : $(document).height() - 80 + 'px !important'});//css({height: (});
+				
 			});
 
 			var buttons = $('.printButtons');

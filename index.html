@@ -34,7 +34,7 @@
     			<td>
     				<select id='selectTechnician' class='form-control'>
     					<option value='Gintautas Krakauskas'>Gintautas Krakauskas</option>
-    					<option value='Valiera'>Direktorius Valiera</option>
+    					<option value='any'>Kitas...</option>
     				</select>
     			</td>
     		</tr>
@@ -46,8 +46,8 @@
     	<table id='buttons' style='position: absolute; right: 31px; top: 132px; z-index: 2'>
     		<tr>
     			<!--<td><button style='display: none' id='jpgButton' class='printButtons btn btn-xs btn-success' type="button">Print .jpg</button></td>-->
-    			<td><button style='display: none' id='pdfButton' class='printButtons btn btn-xs btn-success' type="button" onclick="printPDF()">Print .pdf</button></td>
-    			<td><button style='display: none' id='printButton' class='printButtons btn btn-xs btn-success' type="button" onclick="printOnPrinter()">Print</button></td>
+    			<td><button style='display: none' id='pdfButton' class='printButtons btn btn-xs btn-success' type="button" onclick="printer.printPDF()">Print .pdf</button></td>
+    			<td><button style='display: none' id='printButton' class='printButtons btn btn-xs btn-success' type="button" onclick="printer.printOnPrinter()">Print</button></td>
     		</tr>
     	</table>
       </div>
@@ -59,7 +59,8 @@
   </body>
 
   <script>
-    require('./renderer.js');
-	require('./frontApp.js')();
+    require('./renderer');
+	require('./frontApp')();
+	var printer = require('./printer')
   </script>
 </html>

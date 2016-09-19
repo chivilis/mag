@@ -28,9 +28,10 @@ html {
 }
 .well {
 	margin-bottom: 0px !important;
-	background-color: #2f2f2f !important;
+	//background-color: #2f2f2f !important;
 	border: 1px solid #989898 !important;
 	color: #ffffff;
+	background-color: rgb(14, 94, 253) !important;
 	-webkit-print-color-adjust: economy | exact
 
 }
@@ -57,16 +58,11 @@ canvas {
 	z-index: 2;
 }
 #gearData {
-	/*
-	position: absolute;
-    top: 125px;
-    left: 18px;
-	*/
+	;
 }
 #header {
 	padding-top: 2px;
 	font-size: 14px;
-	//width: 474px;
 }
 #headerLogo {
 	height: 100px;
@@ -74,13 +70,9 @@ canvas {
     top: 173px;
     background-repeat: no-repeat;
     background-size: 100px;
-    /* margin-left: 3rem; */
-    /* padding-top: 4rem; */
-    /* margin-top: 3rem; */
-    /* z-index: -1; */
     opacity: 0.2 !important;
     left: 24px;
-	  width: 100px;
+	width: 100px;
     -webkit-filter: grayscale(100%) invert(100%) !important;
     -webkit-user-drag: none;
 }
@@ -106,31 +98,21 @@ canvas {
 .footerBox {
 	text-align: center;
 	padding: 10px;
-  //color:blue;
-  //color: rgb(0, 121, 121);
-  //background-color: rgb(0, 121, 121);
 }
 #datepicker:hover {
 	cursor: pointer;
 }
 #datepicker {
-	//text-align: center;
 	border: 0;
 	padding-left: 5px;
-    width: 93%;
 }
 #gearInput {
-  /*
-	//text-align: center;
-  border: 0;
-  padding-left: 5px;
-  width: 386px;
-  */
+  ;
 }
 .gearInput {
   border: 0;
   padding-left: 5px;
-  width: 93%;
+  width: 116%;
 }
 #nextService {
 	font-size: large;
@@ -138,13 +120,6 @@ canvas {
 	text-align: center;
 	position: relative;
 	bottom: 22px;
-	/*
-    display: flex;
-    float: right;
-    border: 5px #5f2c2c solid;
-    border-radius: 7px;
-    right: -40px;
-	*/
 }
 .printButtons {
 	margin-right: 4px;
@@ -158,4 +133,10 @@ canvas {
         margin-left: 25mm;
         margin-right: 50mm;
     }
+	
+	/*
+	.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+		border-bottom: 0 !important;
+	}
+	*/
 }

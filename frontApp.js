@@ -3,7 +3,7 @@
   	var form = require('./form');
   	var {dialog} = require('electron').remote;
   	var buttonsManager = require('./ButtonsHandler');
-  	var exec = require('child_process').exec;
+  	//var exec = require('child_process').exec;
 	//var $ = require('jquery');
 
     const {ipcRenderer} = require('electron');

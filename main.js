@@ -15,18 +15,12 @@ app.on('ready', function() {
 	mainWindow = new BrowserWindow({width: 520, height: 800/*, frame: false*/,
 								 movable: true,
 								 resizable: false,
-								 icon: './media/DIUGONIS.ico',
-								 title: ""
+								 icon: './media/diver.png',
+								 title: "Regulator BR Analyser"
 							 });
 
 	Menu.setApplicationMenu(new menuTemplate());
 	mainWindow.setMenu(null);
-  // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
-
-  //mainWindow.webContents.openDevTools()
-
-	//mainWindow.title = 'none';
 
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
 

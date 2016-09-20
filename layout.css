@@ -1,6 +1,13 @@
 html {
   -webkit-user-select: none;
 }
+html, body {
+	height: 100%;
+}
+.container, #header, #containerCanvas {
+	min-height: -webkit-calc(100% - 30px);
+}
+
 .btn:focus {
   outline: 0 !important;
 }
@@ -21,17 +28,17 @@ html {
 }
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
 	vertical-align: baseline !important;
-	border-top: 0 !important;
-	border-bottom: 1px solid #ddd !important;
+	border-top: 1px solid #ddd !important;
+	border-bottom: 0px solid #ddd !important;
 	position: relative;
-	left: -61px;
+	//left: -61px;
 }
 .well {
 	margin-bottom: 0px !important;
 	//background-color: #2f2f2f !important;
 	border: 1px solid #989898 !important;
 	color: #ffffff;
-	background-color: rgb(14, 94, 253) !important;
+	background-color: rgb(0, 85, 255) !important;
 	-webkit-print-color-adjust: economy | exact
 
 }
@@ -46,7 +53,7 @@ canvas {
 	max-height: 370px;
 }
 #containerCanvas {
-	;
+	//display:none;
 }
 #buttons:focus {
   outline: 0 !important;
@@ -54,8 +61,13 @@ canvas {
 #buttons {
 	right: 3%;
 	position: absolute;
-	top: 132px;
+	top: 109px;
 	z-index: 2;
+}
+.btn {
+	color: rgb(241, 241, 241) !important;
+	border-color: rgb(14, 94, 253) !important;
+	background-color: rgb(14, 94, 253) !important;
 }
 #gearData {
 	;
@@ -80,7 +92,7 @@ canvas {
 	width: 189px;
     //border: 0;
     background-color: white;
-    left: -4%;
+    left: -7%;
     position: relative;
 }
 #footer::before {
@@ -90,9 +102,12 @@ canvas {
 	margin-top: 1%;
 }
 #footer {
-	width: 100%;
+	height:30px;
+	margin: 0;
+	clear: both;
+	width:100%;
 	font-size: 13px;
-	bottom: 0px;
+	//bottom: 0px;
     position: relative;
 }
 .footerBox {
@@ -112,7 +127,7 @@ canvas {
 .gearInput {
   border: 0;
   padding-left: 5px;
-  width: 116%;
+  width: 100%;
 }
 #nextService {
 	font-size: large;
@@ -124,7 +139,9 @@ canvas {
 .printButtons {
 	margin-right: 4px;
 }
-
+#ownerInput {
+	width: 194%;
+}
 
 @media print
 {

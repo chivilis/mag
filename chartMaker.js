@@ -2,6 +2,7 @@ var Chart = require('chart.js');
 
 const RANGE_Y = 5;
 
+// MAX RESISTANCE LINE
 function getRangeLine(obj) {
 	var rangeLine = new Array();
 	for(var i = 0; i < obj.length; i++) {
@@ -16,10 +17,13 @@ function getRangeLine(obj) {
 	return rangeLine;
 }
 
-module.exports = function(dataSets) {
+module.exports = function(dataSets, size) {
 var ctx = document.getElementById("myChart");
+$(ctx)[0].height = size;
+$(ctx)[0].width = size;//.myChart.width = 200;
+
 	var scatterChart = new Chart(ctx, {
-		responsive: true,
+		responsive: false,
 		maintainAspectRatio: false,
 		type: 'line',
 		data: {

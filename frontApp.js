@@ -4,6 +4,7 @@
   	var {dialog} = require('electron').remote;
   	var buttonsManager = require('./ButtonsHandler');
   	var exec = require('child_process').exec;
+	//var $ = require('jquery');
 
     const {ipcRenderer} = require('electron');
 	
@@ -77,21 +78,21 @@
 					var loopEndCounter = true;
 
 					MeasureData.forEach(function(MeasureData) {
-							if(MeasureData.pressure >= 0 && loopEndCounter) {
+						if(MeasureData.pressure >= 0 && loopEndCounter) {
 
-								this.dataSetPoss.push({
-									x: MeasureData.index,
-									y: MeasureData.pressure
-								});
+							this.dataSetPoss.push({
+								x: MeasureData.index,
+								y: MeasureData.pressure
+							});
 
-							} else {
-								this.loopEndCounter == false;
+						} else {
+							this.loopEndCounter == false;
 
-								this.dataSetNeg.push({
-									x: MeasureData.index,
-									y: MeasureData.pressure
-								});
-							}
+							this.dataSetNeg.push({
+								x: MeasureData.index,
+								y: MeasureData.pressure
+							});
+						}
 					});
 
 					// SET INDEXES ROWS
@@ -117,8 +118,8 @@
 							count++;
 						});
 
-						dataSetPoss.push({x:dataSetPoss.length + 1, y:0});
-						dataSetNeg.push({x:dataSetPoss[dataSetPoss.length-1].x, y:0});
+						dataSetPoss.push({x: dataSetPoss.length + 1, y: 0});
+						dataSetNeg.push({x: dataSetPoss[dataSetPoss.length - 1].x, y: 0});
 
 					} else {
 						alert('STILL WORKING (if negative array is longer...)')
@@ -133,31 +134,13 @@
 				
 
 				/* CHART */
-				chartMaker(dataSets);
+				chartMaker(dataSets, 700-$('#header').outerHeight());
 				
 				
 				form($('#header')[0], $('#footer'));
 				
 			});
 
-			var buttons = $('.printButtons');
-
-			$('#gearInput').change(function(data) {
-				if(data.target.value.length > 10) {
-					buttonsManager.showPrintButtons(buttons);
-				}
-				else {
-					buttonsManager.hidePrintButtons(buttons);
-					alert('ENTER GEAR DATA!');
-				}
-			});
-
-			// RELOAD LISTENER
-			$('canvas').dblclick(function() {
-				if(confirm('OPEN NEW LOG FILE?')) {
-					location.reload();
-				}
-
-			});
+			buttonsManager.manageButtons();
 		});
 	}

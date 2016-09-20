@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta charset="UTF-8">
-
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	
 	<link rel="stylesheet" type="text/css" href="layout.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="./jquery-ui.min.css">
@@ -19,11 +20,13 @@
     	<table id='gearData' class='table'>
         <tr>
             <td style='text-align:right'>OWNER:</td>
-            <td><input id='ownerInput' class='gearInput' type='text' name='enteredOwner'</input></td>
+            <td id='ownerInputTD'><input id='ownerInput' class='gearInput' type='text' name='enteredOwner' maxlength='46'</input></td>
         </tr>
     		<tr>
     			<td style='text-align:right'>REGULATOR:</td>
-    			<td><input id='gearInput' class='gearInput' type='text' name='enteredGear' placeholder='required field...' value=''/></td>
+    			<td><input id='gearInput' class='gearInput' type='text' name='enteredGear' placeholder='required field...' maxlength='23' value=''/></td>
+				<td style='text-align:right'>SN:</td>
+				<td><input id='gearSN' class='gearInput' type='text' name='enteredGearSN' placeholder='required field...' value='' maxlength='15'/></td>
     		</tr>
     		<tr>
     			<td style='text-align:right; white-space:nowrap'>SERVICE DATE:</td>

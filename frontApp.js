@@ -136,7 +136,6 @@
 				/* CHART */
 				chartMaker(dataSets, 700-$('#header').outerHeight());
 				
-				
 				form($('#header')[0], $('#footer'));
 				
 			});
